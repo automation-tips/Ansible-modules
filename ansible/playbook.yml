@@ -1,0 +1,35 @@
+- hosts: sandbox
+  become: yes
+  become_user: root
+  tasks:
+    # Apache(httpd)のインストール
+    - name: Install http server
+      yum: 
+        name: httpd
+
+    # Apacheの起動
+    # 自動起動設定も有効
+    - name: Start http server
+      service: 
+        name: httpd
+        state: started
+        enabled: yes
+
+    # 設定ファイルの配布
+    # 成功時に handlers (Restart httpd) リスタート
+    - name: Set 00-mpm.conf
+      template:
+        src: 00-mpm.conf.j2
+        dest: /etc/httpd/conf.modules.d/00-mpm.conf
+        owner: root
+        group: root
+        mode: 0644
+      notify: Restart httpd
+
+  # 成功時に httpd をリスタートする
+  handlers:
+    - name: Restart httpd
+      service: 
+        name: httpd
+        state: restarted
+
