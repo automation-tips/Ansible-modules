@@ -1,0 +1,8 @@
+- name: message.
+  debug: msg="set hostname {{ inventory_hostname }}"
+
+# ホストネーム設定
+# inventory/hosts に設定された値に変更
+- name: set hostname
+  hostname:
+    name: "{{ inventory_hostname }}"
