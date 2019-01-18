@@ -1,0 +1,7 @@
+- hosts: sandbox
+  become: yes
+  become_user: root
+  tasks:
+  roles:
+    - hostname
+    - unix_groups
