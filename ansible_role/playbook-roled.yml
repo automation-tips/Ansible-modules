@@ -1,0 +1,6 @@
+- hosts: sandbox
+  become: yes
+  become_user: root
+  tasks:
+  roles:
+    - httpd

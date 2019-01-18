@@ -1,0 +1,21 @@
+# Apache(httpd)インストール
+- name: Install http Server
+  yum:
+    name: httpd
+
+# Apacheの起動 & 自動起動設定
+- name: Start http Server
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+
+# confファイルの配信
+- name: set 00-mpm.conf
+  template:
+    src: 00-mpm.conf.j2
+    dest: /etc/httpd/conf.modules.d/oo-mpm.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart httpd
