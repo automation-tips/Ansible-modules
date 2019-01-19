@@ -1,1 +1,2 @@
 # Ansible-modules
+Ansibleの基本構文についてのサンプルの詰め合わせ
