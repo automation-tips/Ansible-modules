@@ -1,0 +1,10 @@
+- hosts: sandbox
+  become: yes
+  become_user: root
+  tasks:
+  roles:
+    - hostname
+    - unix_groups
+    - unix_users
+    - {role: sudoers/allow-all, group_name: group_a}
+    - {role: sudoers/allow-httpd, group_name: group_b}
