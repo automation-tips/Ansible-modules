@@ -1,0 +1,9 @@
+- name: "Install jenkins"
+  yum:
+    name: jenkins
+
+- name: Start jenkins server
+  service: 
+    name: jenkins
+    state: started
+    enabled: yes
