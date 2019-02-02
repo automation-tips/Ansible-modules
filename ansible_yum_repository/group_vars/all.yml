@@ -1,0 +1,24 @@
+unix_groups:
+  - { name: "group_a", gid: 2100, state: "present" }
+  - { name: "group_b", gid: 2200, state: "present" }
+  - { name: "group_c", gid: 2300, state: "present" }
+
+unix_users:
+  - {
+      name: "user_a",
+      uid: 2101,
+      group: "group_a",
+      state: "present",
+      comment: "User A",
+      password: "$6$3h3wNIzXG3raqQ3F$dd3xGGmXN6rolZyFt11UEA64DnVq.Etp8DrV.XbdXu2YqRkSTilznkyJkERia0jPk6LaeflDotNNxm0Y35.W5/",
+      public_keys: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCbDz6aO82knKIuuFbZBSJTy5/kBmUoU/ttahx0oJJW+CkikY32ePQyWcG2WvjBOYW5h3LnoUrYmXZsLX7aq4QmguGdpBqkXcDMWdgoQAvwK1uN9T+nqBRuQ6LF1DFvHDiyARET/ERaUlphoYkPrPqcQrr7qpe0Ot7M1ypEUavtcPefwspGk5aIfyI/KdLuN9vnqn5EY7UIxyVr9FyH0+76PS4BjVEcIqI+5oZlt4+pg2cJ13/ZMnxzrKM/HODOiRP84X3aNVL6WdENEKPQbOrynVAZs8h+Ld2g2tj3ZghncXX9OZZCTK0ynxW3OQ8qE6VeiwdLepCkJ/guyVZlhUG9 hogehoge"
+    }
+  - {
+      name: "user_b",
+      uid: 2201,
+      group: "group_b",
+      state: "present",
+      comment: "User B",
+      password: "$6$3h3wNIzXG3raqQ3F$dd3xGGmXN6rolZyFt11UEA64DnVq.Etp8DrV.XbdXu2YqRkSTilznkyJkERia0jPk6LaeflDotNNxm0Y35.W5/",
+      public_keys: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCbDz6aO82knKIuuFbZBSJTy5/kBmUoU/ttahx0oJJW+CkikY32aPQyWca2WvjBOYW5hALnoUBYmXZsLX7aq4QmguGdpBqkXcDMWdgoQAvwK1uN9T+nqBRuQ6LF1DFvHDiyARET/ERaUlphoYkPrPqcQrr7qpe0Ot7M1ypEUavtcPefwspGk5aIfyI/KdLuN9vnqn5EY7UIxyVr9FyH0+76PS4BjVEcIqI+5oZlt4+pg2cJ13/ZMnxzrKM/HODOiRP84X3aNVL6WdENEKPQbOrynVAZs8h+Ld2g2tj3ZghncXX9OZZCTK0ynxW3OQ8qE6VeiwdLepCkJ/guyVZlhUG9 goemon"
+    }
