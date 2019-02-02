@@ -1,0 +1,3 @@
+- name: "Install jenkins"
+  yum:
+    name: jenkins
