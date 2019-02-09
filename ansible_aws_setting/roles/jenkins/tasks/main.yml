@@ -1,0 +1,13 @@
+- name: "Install openjdk"
+  yum:
+    name: java-1.8.0-openjdk
+
+- name: "Install jenkins"
+  yum:
+    name: jenkins
+
+- name: Start jenkins server
+  service: 
+    name: jenkins
+    state: started
+    enabled: yes

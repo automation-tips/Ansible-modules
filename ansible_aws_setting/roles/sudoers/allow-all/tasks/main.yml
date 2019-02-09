@@ -1,0 +1,4 @@
+- template:
+    src: allow-all.j2
+    dest: "/etc/sudoers.d/allow-all-{{ group_name }}"
+    validate: '/usr/sbin/visudo -cf %s'

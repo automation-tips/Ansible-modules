@@ -24,6 +24,11 @@ $ cd VMs/sandbox/
 $ vagrant up
 ```
 
+# Sandboxサーバー(Amazon Linux2)構築
+$ cd VMs/ec2-sandbox/
+$ vagrant up
+```
+
 ## サーバーへのログイン
 
 ```
@@ -33,6 +38,11 @@ $ vagrant ssh
 
 # Sandboxサーバーへのログイン
 $ cd VMs/sandbox/
+$ vagrant ssh
+```
+
+# Sandboxサーバー(Amazon Linux2)へのログイン
+$ cd VMs/ec2-sandbox/
 $ vagrant ssh
 ```
 
