@@ -85,6 +85,8 @@ fi
 if [ ! `cat /etc/hosts | grep -q sandbox` ]; then
   echo "192.168.149.11 l4a-sandbox.localdomain" >> /etc/hosts
   echo "add sandbox to /etc/hosts"
+  echo "192.168.149.12 l4a-ec2-sandbox.localdomain" >> /etc/hosts
+  echo "add ec2-sandbox to /etc/hosts"
 fi
 
   SHELL

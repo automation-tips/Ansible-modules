@@ -1,0 +1,14 @@
+- hosts: ec2-sandbox
+  become: yes
+  become_user: root
+  tasks:
+  roles:
+    - hostname
+    - unix_groups
+    - unix_users
+    - httpd
+    - {role: sudoers/allow-all, group_name: group_a}
+    - {role: sudoers/allow-httpd, group_name: group_b}
+    - jenkins
+    - cron/yum_autoupdate
+    - samples/shell
