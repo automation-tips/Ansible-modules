@@ -1,0 +1,38 @@
+httpd:
+  mpm:
+    prefork_module:
+      StartServers: 10
+      MinSpareServers: 10
+      MaxSpareServers: 30
+      ServerLimit: 1000
+      MaxRequestWorkers: 1000
+      MaxRequestsPerChild: 5000
+    event_module:
+      StartServers: 3
+      MinSpareThreads: 75
+      MaxSpareThreads: 250
+      ThreadsPerChild: 25
+      MaxRequestWorkers: 400
+      MaxConnectionsPerChild: 0
+    KeepAlive: "On"
+    MaxKeepAliveRequests: 100
+    KeepAliveTimeout: 30
+
+
+ec2_region: ap-northeast-1
+ec2_instance_type: t2.micro
+ec2_image: ami-2724cf58 # Amazon Linux 2 LTS Candidate 2 AMI (HVM)
+ec2_key_name: fox
+ec2_volumes:
+  - device_name: /dev/xvda
+    volume_type: gp2
+    volume_size: 8
+    delete_on_termination: true
+ec2_instance_profile_name: l4a-ec2-role
+ec2_group: ['l4a-web']
+ec2_tags:
+    Domain: kento75demo.jp  ## このドメインは前もって用意しておく
+    Environment: l4a
+    Role: web
+ec2_assign_public_ip: yes
+ec2_vpc_subnet_id: subnet-2912275f

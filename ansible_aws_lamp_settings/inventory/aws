@@ -1,0 +1,7 @@
+[l4a-web]
+l4a-web01.kento75demo.jp ec2_vpc_subnet_id=subnet-5a2d5902
+l4a-web02.kento75demo.jp ec2_vpc_subnet_id=subnet-d298e7fa
+l4a-web03.kento75demo.jp ec2_vpc_subnet_id=subnet-2912275f
+
+[l4a-db]
+l4a-db01.kento75demo.jp ec2_vpc_subnet_id=subnet-5a2d5902

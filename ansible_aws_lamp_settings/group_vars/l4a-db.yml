@@ -1,0 +1,17 @@
+ec2_region: ap-northeast-1
+ec2_instance_type: t2.micro
+ec2_image: ami-2724cf58 # Amazon Linux 2 LTS Candidate 2 AMI (HVM)
+ec2_key_name: fox
+ec2_volumes:
+  - device_name: /dev/xvda
+    volume_type: gp2
+    volume_size: 8
+    delete_on_termination: true
+ec2_instance_profile_name: l4a-ec2-role
+ec2_group: ['l4a-db']
+ec2_tags:
+    Domain: kento75demo.jp
+    Environment: l4a
+    Role: db
+ec2_assign_public_ip: yes
+ec2_vpc_subnet_id: subnet-2912275f

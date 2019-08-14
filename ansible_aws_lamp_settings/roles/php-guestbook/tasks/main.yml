@@ -1,0 +1,36 @@
+- file:
+    path: /var/webapps
+    state: directory
+    mode: 0755
+
+- name: 
+  yum:
+    name: mysql-community-client
+    state: latest
+
+- git:
+    repo: 'https://github.com/kento75demo/php-guestbook.git'
+    dest: /var/webapps/php-guestbook
+  notify: Restart httpd
+
+- name: Set setting.php
+  template:
+    src: setting.php.j2
+    dest: /var/webapps/php-guestbook/config/setting.php
+    owner: root
+    group: root
+    mode: 0644
+
+- name: create database table
+  shell: mysql --user={{ db_user }} --password={{ db_pass }} {{ db_name }} -h {{ db_host }} < create_tbl_guestbook.sql
+  args:
+    chdir: /var/webapps/php-guestbook/sql
+
+- name: Set php-guestbook.conf
+  template:
+    src: php-guestbook.conf.j2
+    dest: /etc/httpd/conf.d/php-guestbook.conf.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart httpd

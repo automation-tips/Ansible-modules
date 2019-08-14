@@ -1,0 +1,20 @@
+- hosts: l4a-web
+  connection: local
+  gather_facts: no
+  roles:
+    - ec2
+
+- hosts: l4a-db
+  connection: local
+  gather_facts: no
+  roles:
+    - ec2
+
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  vars_files:
+    - group_vars/l4a-web.yml
+  roles:
+    - {role: elb_target_group, group_name: l4a-web, vpc_id: vpc-8abfdcee }
+  tags: deploy

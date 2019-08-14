@@ -1,0 +1,31 @@
+- name: Gather facts
+  ec2_instance_facts:
+    filters:
+      "tag:Domain": "{{ ec2_tags.Domain }}"
+      "tag:Environment": "{{ ec2_tags.Environment }}"
+      "tag:Role": "{{ ec2_tags.Role }}"
+      "instance-state-name": "running"
+  register: ec2_metadata
+
+- name: show instance id
+  debug:
+    msg: "{{ item.instance_id }}"
+  with_items: "{{ ec2_metadata.instances }}"
+
+- set_fact:
+    target_data: "{{ target_data|default([]) + [{'Id': item.instance_id, 'Port': 80 }]}}"
+  with_items: "{{ ec2_metadata.instances }}"
+
+- name: show target_data
+  debug:
+    msg: "{{ target_data }}"
+
+- name: ALB target group
+  elb_target_group:
+    name: "{{ group_name }}"
+    port: 80
+    protocol: http
+    vpc_id: "{{ vpc_id }}"
+    targets: "{{ target_data }}"
+    modify_targets: yes
+    state: present
